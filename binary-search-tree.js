@@ -46,24 +46,84 @@ class BinarySearchTree {
 
   preOrderTraversal(currentNode = this.root) {
     // Your code here
+    if (currentNode == null) {
+      return;
+    }
+    console.log(currentNode.val);
+    this.preOrderTraversal(currentNode.left);
+    this.preOrderTraversal(currentNode.right);
   }
 
   inOrderTraversal(currentNode = this.root) {
     // Your code here
+    if (currentNode == null) {
+      return;
+    }
+    this.inOrderTraversal(currentNode.left);
+    console.log(currentNode.val);
+    this.inOrderTraversal(currentNode.right);
   }
 
   postOrderTraversal(currentNode = this.root) {
     // Your code here
+    if (currentNode == null) {
+      return;
+    }
+    this.postOrderTraversal(currentNode.left);
+    this.postOrderTraversal(currentNode.right);
+    console.log(currentNode.val);
   }
 
   // Breadth First Traversal - Iterative
   breadthFirstTraversal() {
     // your code here
+
+    // initialize a queue with the root node
+    let queue = [this.root];
+
+    // while the queue is not empty
+    while (queue.length != 0) {
+      // print and remove first node in queue
+      let node = queue.shift();
+      console.log(node.val);
+      // if the node has a left node
+      if (node.left != null) {
+        // push the left node on the back of the queue
+        queue.push(node.left);
+      }
+      // if the node has a right node
+      if (node.right) {
+        // push the right node on the back of the queue
+        queue.push(node.right);
+      }
+    }
   }
 
   // Depth First Traversal - Iterative
   depthFirstTraversal() {
     // your code here
+    // initialize a stack with the root node
+    // displaying right to left
+    let currentNode = this.root;
+    let stack = [currentNode];
+
+    // while the stack is not empty
+    while (stack.length != 0) {
+      // print and remove last node in stack
+
+      let node = stack.pop();
+      console.log(node.val);
+      // if the node has a left node
+      if (node.left != null) {
+        // push the left node on the back of the stack
+        stack.push(node.left);
+      }
+      // if the node has a right node
+      if (node.right != null) {
+        // push the right node on the back of the stack
+        stack.push(node.right);
+      }
+    }
   }
 }
 
